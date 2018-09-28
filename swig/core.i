@@ -1,3 +1,17 @@
+%module(directors="1") kuzzlesdk
+%{
+#include "exceptions.hpp"
+#include "kuzzle.hpp"
+#include "collection.hpp"
+#include "index.hpp"
+#include "server.hpp"
+#include "document.hpp"
+#include "realtime.hpp"
+#include "auth.hpp"
+#include <assert.h>
+%}
+
+
 %ignore *::error;
 %ignore *::status;
 %ignore *::stack;
@@ -19,7 +33,18 @@
 %}
 
 %include "stl.i"
-%include "kcore.i"
+
+%define _Complex
+%enddef
+
+%include "exceptions.hpp"
+%include "kuzzle.hpp"
+%include "collection.hpp"
+%include "index.hpp"
+%include "server.hpp"
+%include "document.hpp"
+%include "realtime.hpp"
+%include "auth.hpp"
 
 %extend options {
     options() {
